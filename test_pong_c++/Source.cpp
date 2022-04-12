@@ -1,5 +1,58 @@
 #pragma once
 
+/*
+#include <mutex>
+#include <queue>
+
+class threadSafe_queue {
+
+	std::queue<int> rawQueue; // структура, обща€ дл€ всех потоков
+	std::mutex m; // красна€ дверь rawQueue
+
+public:
+
+	int& retrieve_and_delete() {
+		int front_value = 0; // если пуста€, возвращает 0
+		m.lock();
+		// ќтныне текущий поток единственный, который имеет доступ к rawQueue
+		if (!rawQueue.empty()) {
+			front_value = rawQueue.front();
+			rawQueue.pop();
+		}
+		m.unlock();
+		// теперь другие потоки могут захватить мьютекс
+		return front_value;
+	};
+
+	void push(int val) {
+		m.lock();
+		rawQueue.push(val);
+		m.unlock();
+	};
+
+};
+
+
+#include <shared_mutex>
+#include <vector>
+std::shared_mutex door; //объ€вление мьютекса
+std::vector<int> v;
+int readVectorSize() {
+	//потоки могут вызывать эту функцию одновременно
+	// доступ на запись запрещена, когда получен sl
+
+	std::shared_lock<std::shared_mutex> sl(door);
+	return v.size();
+}
+void pushElement(int new_element) {
+	//гарантирован эксклюзивный доступ к вектору 
+
+	std::unique_lock<std::shared_mutex> ul(door);
+	v.push_back(new_element);
+}
+*/
+
+
 #include <time.h>
 #include <random>
 #include <conio.h>
